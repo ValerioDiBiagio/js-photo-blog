@@ -1,0 +1,20 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* intestazione della pagina */
+
+header {
+    background-image: url(img/wall.png);
+    height: 150px;
+    font-family: "Edu TAS Beginner", sans-serif;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 70px;
+    padding: 35px;
+}
