@@ -17,8 +17,18 @@ axios.get(endpoint)
             console.log(currentElement);
             // salvare in una variabile l'url dell'immagine presente nell'oggetto
             const { url: imgUrl } = currentElement;
+            // salvare in una variabile l'elemento row html
+            const rowElement = document.querySelector('.row');
+            // appendere alla row l'elemento html per generare la card dell'immagine
+            rowElement.innerHTML += `<div class="card">
+                    <img class="pin" src="img/pin.svg" alt="Puntina">
+                    <div class="card-pic">
+                        <img src="${imgUrl}" alt="#">
+                    </div>
+                    <div class="card-text">
+                        <p></p>
+                    </div>`
         }
-
     })
     // se ci sono errori genero il messaggio di alert
     .catch(error => {
