@@ -16,7 +16,7 @@ axios.get(endpoint)
             const currentElement = element[i]
             console.log(currentElement);
             // salvare in una variabile l'url dell'immagine presente nell'oggetto
-            const { url: imgUrl } = currentElement;
+            const { url: imgUrl, date: dates, title: titles } = currentElement;
             // salvare in una variabile l'elemento row html
             const rowElement = document.querySelector('.row');
             // appendere alla row l'elemento html per generare la card dell'immagine
@@ -26,7 +26,8 @@ axios.get(endpoint)
                         <img src="${imgUrl}" alt="#">
                     </div>
                     <div class="card-text">
-                        <p></p>
+                        <p>${dates}</p>
+                        <h2>${titles}</h2>
                     </div>`
         }
     })
