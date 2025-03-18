@@ -10,13 +10,11 @@ axios.get(endpoint)
         // fare un ciclo for per iterare l'array
         for (let i = 0; i < element.length; i++) {
             // salvare in una variabile l'oggetto singolo dell'array
-            const currentElement = element[i]
-            // salvare in una variabile l'url dell'immagine presente nell'oggetto
-            const { url: imgUrl, date: dates, title: titles } = currentElement;
+            const currentApiElement = element[i]
             // salvare in una variabile l'elemento row html
             const rowElement = document.querySelector('.row');
             // richiamare la funzione per l'elemento html
-            rowElement.innerHTML += generateHtmlElement(currentElement)
+            rowElement.innerHTML += generateHtmlElement(currentApiElement);
         }
 
         // richiamare elemento html
@@ -27,41 +25,45 @@ axios.get(endpoint)
         for (let i = 0; i < imgElement.length; i++) {
             const currentImg = imgElement[i];
             console.log(currentImg);
+            const currentElement = element[i]
+
             // mettere evento delle card al click
             currentImg.addEventListener('click', function () {
-            overlayElement.classList.remove("dnone");
+                overlayElement.innerHTML = '';
+                overlayElement.appendChild(btnElement);
+                overlayElement.innerHTML += createElementImg(currentElement);
+                overlayElement.classList.remove("dnone");
+
+                // richiamare la funzione del click sul bottone
+                btnFunction();
             })
         }
-
-        // mettere evento del bottone al click
-        buttonElement.addEventListener('click', function () {
-            overlayElement.classList.add('dnone')
-        })
+       
     })
     // se ci sono errori genero il messaggio di alert
     .catch(error => {
-        console.log(alert('Errore'));
+        console.log(alert("L'indirizzo non è corretto"));
     })
 
 
 // elementi html
-const buttonElement = document.getElementById('btn');
-console.log(buttonElement);
 
+// bottone
+const btnElement = document.createElement('button');
+console.log(btnElement);
+btnElement.innerHTML = 'Chiudi';
+btnElement.classList.add('btn');
+
+// overlay
 const overlayElement = document.querySelector('.overlay');
 console.log(overlayElement);
 
-// overlay
 overlayElement.classList.add("dnone");
 
 
+// funzioni
 
-
-
-
-
-
-// funzione
+// creazione delle card
 function generateHtmlElement(item) {
 return `<div class="card">
                     <img class="pin" src="img/pin.svg" alt="Puntina">
@@ -72,4 +74,22 @@ return `<div class="card">
                         <p>${item.date}</p>
                         <h2>${item.title}</h2>
                     </div>`
+}
+
+// creazione delle immagini
+function createElementImg (item) {
+
+    return `<img class="imgover" src="${item.url}" alt="${item.title}"> `
+
+}
+
+// click sul bottone
+function btnFunction () {
+
+    const btnElement = document.querySelector('.btn');
+
+    btnElement.addEventListener("click", function() {
+        
+        overlayElement.classList.add("dnone");
+    })
 }

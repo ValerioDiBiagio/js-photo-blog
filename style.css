@@ -68,17 +68,16 @@ main {
     padding-top: 20px;
 } 
 
-#btn {
+.btn {
     font-size: large;
     padding: 5px 10px;
     cursor: pointer;
     margin-bottom: 30px;
 }
 
-#imgover {
+.imgover {
     height: 600px;
     width: 600px;
-    background-color: blue;
     margin-top: 10px;
 }
 
@@ -94,6 +93,8 @@ main {
     width: calc((100% - 40px) / 3);
     padding: 20px;
     position: relative;
+    cursor: pointer;
+    box-shadow: 3px 3px 10px #000000;
 }
 
 /* immagini delle cards */
@@ -132,6 +133,8 @@ p {
     transform: translate(50%,-25%);
 }
 
+
+
 /* MEDIA QUERY */
 
 /* Tablet */
@@ -159,4 +162,3 @@ p {
         width: 80%;
     }
 }
-    
