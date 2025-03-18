@@ -34,6 +34,7 @@ h1 {
 
 main {
     background-image: url(img/cork.png);
+    padding-bottom: 40px;
 }
 
 /* card container*/
