@@ -77,8 +77,8 @@ main {
 }
 
 .imgover {
-    height: 600px;
-    width: 600px;
+    max-height: 600px;
+    max-width: 600px;
     margin-top: 10px;
 }
 
@@ -96,6 +96,7 @@ main {
     position: relative;
     cursor: pointer;
     box-shadow: 3px 3px 10px #000000;
+    transition: all 0.5s;
 }
 
 /* immagini delle cards */
