@@ -4,13 +4,15 @@ const endpoint = 'https://lanciweb.github.io/demo/api/pictures/';
 // chiamata api
 axios.get(endpoint)
     .then((response) => {
+        console.log(response);
         // salvare in una variabile l'array di oggetti
         const element = response.data
 
         // fare un ciclo for per iterare l'array
         for (let i = 0; i < element.length; i++) {
             // salvare in una variabile l'oggetto singolo dell'array
-            const currentApiElement = element[i]
+            const currentApiElement = element[i];
+            console.log(currentApiElement);
             // salvare in una variabile l'elemento row html
             const rowElement = document.querySelector('.row');
             // richiamare la funzione per l'elemento html
@@ -25,7 +27,8 @@ axios.get(endpoint)
         for (let i = 0; i < imgElement.length; i++) {
             const currentImg = imgElement[i];
             console.log(currentImg);
-            const currentElement = element[i]
+            const currentElement = element[i];
+            console.log(currentElement);
 
             // mettere evento delle card al click
             currentImg.addEventListener('click', function () {
@@ -34,8 +37,14 @@ axios.get(endpoint)
                 overlayElement.innerHTML += createElementImg(currentElement);
                 overlayElement.classList.remove("dnone");
 
-                // richiamare la funzione del click sul bottone
-                btnFunction();
+                // aggiungere evento bottone
+
+                const buttonElement = document.querySelector('.btn');
+                
+                buttonElement.addEventListener("click", function() {
+                    
+                    overlayElement.classList.add("dnone");
+                })
             })
         }
        
@@ -81,15 +90,4 @@ function createElementImg (item) {
 
     return `<img class="imgover" src="${item.url}" alt="${item.title}"> `
 
-}
-
-// click sul bottone
-function btnFunction () {
-
-    const btnElement = document.querySelector('.btn');
-
-    btnElement.addEventListener("click", function() {
-        
-        overlayElement.classList.add("dnone");
-    })
 }
